@@ -2,3 +2,7 @@ nasa/__pycache__/__init__.cpython-38.pyc
 nasa/__pycache__/settings.cpython-38.pyc
 nasa/__pycache__/wsgi.cpython-38.pyc
 nasa/__pycache__/urls.cpython-38.pyc
+nasa_api/__pycache__/views.cpython-38.pyc
+.gitignore
+nasa_api/__pycache__/__init__.cpython-38.pyc
+nasa_api/__pycache__/urls.cpython-38.pyc

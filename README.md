@@ -1,3 +1,3 @@
 # nasa
 
-Simple web which is showing pictures froma NASA API
+Simple web which is showing pictures from NASA API

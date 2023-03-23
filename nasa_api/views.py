@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Nasa view")
+    return render(request, 'nasa_api_templates/index.html')

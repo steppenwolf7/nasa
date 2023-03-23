@@ -6,3 +6,9 @@ nasa_api/__pycache__/views.cpython-38.pyc
 .gitignore
 nasa_api/__pycache__/__init__.cpython-38.pyc
 nasa_api/__pycache__/urls.cpython-38.pyc
+nasa_api/__pycache__/admin.cpython-38.pyc
+.gitignore
+nasa_api/__pycache__/apps.cpython-38.pyc
+nasa_api/__pycache__/models.cpython-38.pyc
+nasa_api/migrations/__pycache__/__init__.cpython-38.pyc
+.gitignore

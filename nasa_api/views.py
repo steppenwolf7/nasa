@@ -15,12 +15,12 @@ def index(request):
     explanation = data["explanation"]
     hdurl = data["hdurl"]
     title = data["title"]
-
+    
     my_context = {
-        'copyright': copyright,
+        'copyright':copyright,
         'explanation':explanation, 
-        'hdurl': hdurl, 
-        'title:':title
+        'hdurl':hdurl, 
+        'title':title
                  }
     return render(request, 'nasa_api_templates/index.html', context=my_context)
 

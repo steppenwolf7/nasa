@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Poruszający się punkt na mapie świata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/leaflet-moving-marker/2.7.6/moving-marker.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+  <body>
+    <h1>{{ position }}</h1>
+    <h2>{{ latitude }} : {{ longitude }}</h2>
+   
+    <h1>Długość:<span id="longitude"></span></h1>
+    
+    <div id="map" style="height: 500px;"></div>
+    
+    <script>
+        
+        function aktualizujZmienna() {
+            $.get('/iss', function(data) {
+                $('#longitude').text(data.longitude);
+                console.log("Zmienna 'longitude' wynosi: " + data.longitude);
+            });
+          }
+          
+        setInterval(aktualizujZmienna, 2000);
+    
+       /*
+        function pobierzZmienna() {
+            $.get('/iss', function(data) { // wywołaj widok Django
+                var zmienna = data.longitude; // pobierz wartość z odpowiedzi
+                document.getElementById("longitude").innerHTML = longitude; // zaktualizuj wartość na stronie
+            });
+        }
+       */ 
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        var mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+        }).addTo(mymap);
+        
+       // var marker = L.marker([latitude, longitude], { title: "ISS International Station" }).addTo(mymap);
+    </script>
+  </body>
+</html>

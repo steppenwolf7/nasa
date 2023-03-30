@@ -8,43 +8,27 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
   <body>
-    <h1>{{ position }}</h1>
+    
     <h2>{{ latitude }} : {{ longitude }}</h2>
    
-    <h1>Długość:<span id="longitude"></span></h1>
+    <h3>Długość:<span id="longitude"></span></h3>
     
     <div id="map" style="height: 500px;"></div>
     
     <script>
-        
-        function aktualizujZmienna() {
-            $.get('/iss', function(data) {
-                $('#longitude').text(data.longitude);
+       
+      function aktualizujZmienna() {
+            $.get('/iss_ask', function(data) {
+                let longitude = data.longitude;
+                let latitude = data.latitude;
+                $('#longitude').text(data.longitude,data.latitude);
                 console.log("Zmienna 'longitude' wynosi: " + data.longitude);
+                marker.setLatLng([latitude, longitude]);
             });
           }
           
-        setInterval(aktualizujZmienna, 2000);
+        setInterval(aktualizujZmienna, 1000);
     
-       /*
-        function pobierzZmienna() {
-            $.get('/iss', function(data) { // wywołaj widok Django
-                var zmienna = data.longitude; // pobierz wartość z odpowiedzi
-                document.getElementById("longitude").innerHTML = longitude; // zaktualizuj wartość na stronie
-            });
-        }
-       */ 
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
         var mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -54,7 +38,7 @@
             maxZoom: 18,
         }).addTo(mymap);
         
-       // var marker = L.marker([latitude, longitude], { title: "ISS International Station" }).addTo(mymap);
+       var marker = L.marker([0, 0], { title: "ISS International Station" }).addTo(mymap);
     </script>
   </body>
 </html>

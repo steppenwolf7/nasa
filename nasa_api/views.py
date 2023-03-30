@@ -1,6 +1,7 @@
 from django.shortcuts import render
 #from django.http import HttpResponse
 import requests
+from django.http import JsonResponse
 
 def index(request):
     key = 'cFKcJgtVk819w8bOr5iM5UJv07wsrR0vPamoy0fx'
@@ -44,18 +45,33 @@ def fullhd(request):
 def iss(request):
     url = "http://api.open-notify.org/iss-now.json"
     response = requests.get(url)
-    data = response.json()
+    data1 = response.json()
     
-    latitude = data['iss_position']['latitude']
-    longitude = data['iss_position']['longitude']
+    latitude = data1['iss_position']['latitude']
+    longitude = data1['iss_position']['longitude']
 
     #latitude = str(latitude1)
     #longitude = str(longitude1)
     
     
     context = {
-        'position':data,
+        'position':data1,
         'latitude':latitude,
         'longitude':longitude
               }
     return render(request, 'nasa_api_templates/iss.html', context=context)
+
+def iss_ask(request):
+    url = "http://api.open-notify.org/iss-now.json"
+    response = requests.get(url)
+    data1 = response.json()
+    
+    latitude = data1['iss_position']['latitude']
+    longitude = data1['iss_position']['longitude']
+
+    context = {
+        'position':data1,
+        'latitude':latitude,
+        'longitude':longitude
+              }
+    return JsonResponse(context, content_type='application/json')

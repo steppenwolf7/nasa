@@ -17,7 +17,7 @@
     
     <script>
        
-      function aktualizujZmienna() {
+      function tracker() {
             $.get('/iss_ask', function(data) {
                 let longitude = data.longitude;
                 let latitude = data.latitude;
@@ -27,7 +27,7 @@
             });
           }
           
-        setInterval(aktualizujZmienna, 1000);
+        setInterval(tracker, 1000);
     
         var mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
 

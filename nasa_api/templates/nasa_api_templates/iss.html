@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    {% load static %}  
+<head>
     <title>Poruszający się punkt na mapie świata</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
@@ -29,8 +30,18 @@
           
         setInterval(tracker, 1000);
     
-        var mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
+        let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
 
+        let issIcon = L.icon({
+                iconUrl: '{% static 'iss.jpg' %}',
+                iconSize: [50, 50],
+                iconAnchor: [25, 25]
+            });
+        
+        let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Station" }).addTo(mymap);  
+        
+        
+        
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -38,7 +49,7 @@
             maxZoom: 18,
         }).addTo(mymap);
         
-       var marker = L.marker([0, 0], { title: "ISS International Station" }).addTo(mymap);
+       
     </script>
   </body>
 </html>

@@ -12,7 +12,7 @@ def index(request):
     response = requests.get(url_potd, params=params)
     data = response.json()
     
-    if "copyright" in data and data["copyright"]:
+    if "copyright" in data:
         copyright = data["copyright"]
     else:
         copyright = "None"

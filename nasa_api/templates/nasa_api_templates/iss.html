@@ -18,7 +18,7 @@
     <script>
        
       function tracker() {
-            $.get('/iss_ask', function(data) {
+            $.get('/iss_ask', function(data) {   
                 let longitude = data.longitude;
                 let latitude = data.latitude;
                 $('#longitude').text(data.longitude,data.latitude);

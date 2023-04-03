@@ -26,7 +26,7 @@ def index(request):
         'hdurl':hdurl, 
         'title':title
                  }
-    return render(request, 'nasa_api_templates/index.html', context=my_context)
+    return render(request, 'nasa_api_templates/nasa_photo.html', context=my_context)
 
 
 def fullhd(request):
@@ -53,16 +53,13 @@ def iss(request):
     latitude = data1['iss_position']['latitude']
     longitude = data1['iss_position']['longitude']
 
-    #latitude = str(latitude1)
-    #longitude = str(longitude1)
-    
-    
+ 
     context = {
         'position':data1,
         'latitude':latitude,
         'longitude':longitude
               }
-    return render(request, 'nasa_api_templates/iss.html', context=context)
+    return render(request, 'nasa_api_templates/index.html', context=context)
 
 def iss_ask(request):
     url = "http://api.open-notify.org/iss-now.json"

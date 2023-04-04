@@ -9,24 +9,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
   <body>
-    <div class="row">
-  <h1><div class="col">Actual Position of ISS:</div></h1>
     
-    <div class="container text-center text-white">
+    
+    <div class="container1 text-center text-white">
+      <h1><div class="col">Actual Position of ISS:</div></h1>
       <div class="row">
         <div class="col">
-          <h3><span id="latitude">Latitude</span></h3>
+          <h4 style="padding: 20px"><span style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" id="latitude">Latitude</span></h4>
         </div>
         <div class="col">
-          <h3><span id="longitude">Longitude</span><h2>
+          <h4 style="padding: 20px"><span style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" id="longitude">Longitude</span><h2>
         </div>
       </div>
     
-   <div id="map" style="height: 500px;"></div>
+   <div id="map" style="height: 500px; padding: 50px; box-shadow: 12px 12px 6px rgba(0, 0, 0, 0.5);"></div></div>
    
    <div class="row" style="padding: 50px">
-    <h1><div class="col">Astronomy Picture of the Day:</div></h1>
-    <a href="{% url 'nasa_photo' %}"><button type="button" class="btn btn-outline-primary ntn-lg">PHOTO</button></a>
+    <div class="col"><h2 style="padding: 10px">Astronomy Picture of the Day:</h2></div>
+    <a href="{% url 'nasa_photo' %}"><button type="button" style="padding: 10px; box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" class="btn btn-outline-light ntn-lg">PHOTO</button></a>
     
     
     <script>
@@ -48,8 +48,8 @@
         let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
 
         let issIcon = L.icon({
-                iconUrl: '{% static 'iss.jpg' %}',
-                iconSize: [30, 30],
+                iconUrl: '{% static 'iss.png' %}',
+                iconSize: [40, 40],
                 iconAnchor: [25, 25]
             });
         

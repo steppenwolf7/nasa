@@ -2,22 +2,24 @@
 
 
 {% block content %}
-<div class="container text-center text-white">
-    <div class="row">
-      <div class="col">
-        <a href="{% url 'index' %}">Back to ISS Tracker</a>
-      </div>
-    </div>
-<div style="padding:30px"><h1>Astronomy Picture of the Day</h1></div>
+
+  <div class="col" style="padding:20px">
+    <a href="{% url 'index' %}"><button type="button" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" class="btn btn-outline-light ntn-lg">Back to ISS Tracker</button></a>
+  </div>
+
+<div class="container text-center text-white" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);">
+    
+<h2 style="padding:30px">Astronomy Picture of the Day</h2>
 <div class="container-md text-center p-5 my-5 text-white" border>
-<h2>{{ title }}</h2>
-    <a href="{% url 'fullhd' %}">
-    <img id="photo" src="{{ hdurl }}" alt="FullHD" target="_blank" class="img-fluid"> 
+<h3>{{ title }}</h3>
+    
+<a href="{% url 'fullhd' %}">
+    <img id="photo" src="{{ hdurl }}" alt="FullHD" target="_blank" class="img-fluid" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);"> 
     </a></div>
     
     
     <h4>{{ explanation }}</h4>
-    <h5>copyright: {{ copyright }}</h5>
+    <h5>copyright: {{ copyright }}</h5></div>
   
     
     

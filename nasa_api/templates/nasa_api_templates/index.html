@@ -15,10 +15,10 @@
       <h1><div class="col">Actual Position of ISS:</div></h1>
       <div class="row">
         <div class="col">
-          <h4 style="padding: 20px"><span style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" id="latitude">Latitude</span></h4>
+          <h4 style="padding: 20px"><span id="latitude">Latitude</span> <span id="letter1">N/S</span></h4>
         </div>
         <div class="col">
-          <h4 style="padding: 20px"><span style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" id="longitude">Longitude</span><h2>
+          <h4 style="padding: 20px"><span id="longitude">Longitude</span> <span id="letter2">W/E</span><h4>
         </div>
       </div>
     
@@ -30,21 +30,25 @@
     
     
     <script>
-       
+      
       function tracker() {
             $.get('/iss_ask', function(data) {         
                 let longitude = data.longitude;
                 let latitude = data.latitude;
+                let letter1 = data.letter1;
+                let letter2 = data.letter2;
                 $('#longitude').text(data.longitude);
                 $('#latitude').text(data.latitude);
+                $('#letter1').text(data.letter1);
+                $('#letter2').text(data.letter2);
                 
-                console.log("Zmienna 'longitude' wynosi: " + data.longitude);
+                console.log("'longitude' wynosi: " + data.longitude);
                 marker.setLatLng([latitude, longitude]);
             });
           }
-          
+              
         setInterval(tracker, 1000);
-    
+          
         let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
 
         let issIcon = L.icon({

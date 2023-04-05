@@ -16,6 +16,7 @@ def index(request):
         copyright = data["copyright"]
     else:
         copyright = "None"
+    
     explanation = data["explanation"]
     hdurl = data["hdurl"]
     title = data["title"]
@@ -48,30 +49,45 @@ def fullhd(request):
 def iss(request):
     url = "http://api.open-notify.org/iss-now.json"
     response = requests.get(url)
-    data1 = response.json()
+    data = response.json()
     
-    latitude = data1['iss_position']['latitude']
-    longitude = data1['iss_position']['longitude']
-
+    latitude = data['iss_position']['latitude']
+    longitude = data['iss_position']['longitude']
+    
  
     context = {
-        'position':data1,
         'latitude':latitude,
         'longitude':longitude
-              }
+             }
     return render(request, 'nasa_api_templates/index.html', context=context)
 
 def iss_ask(request):
     url = "http://api.open-notify.org/iss-now.json"
     response = requests.get(url)
-    data1 = response.json()
+    data = response.json()
     
-    latitude = data1['iss_position']['latitude']
-    longitude = data1['iss_position']['longitude']
+    latitude = data['iss_position']['latitude']
+    longitude = data['iss_position']['longitude']
+    minus_sign1 = latitude[0]
+    minus_sign2 = longitude[0]
+    
+    letter1 = None
+    if minus_sign1 == "-":
+        letter1 = "S"
+    else:
+        letter1 = "N"
 
+    letter2 = None
+    if minus_sign2 == "-":
+        letter2 = "W"
+    else:
+        letter2 = "E"
+    
     context = {
-        'position':data1,
+        'position':data,
         'latitude':latitude,
-        'longitude':longitude
+        'longitude':longitude, 
+        'letter1':letter1,
+        'letter2':letter2
               }
     return JsonResponse(context, content_type='application/json')

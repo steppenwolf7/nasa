@@ -1,14 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load static %}  
-<head>
-    <title>Poruszający się punkt na mapie świata</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/leaflet-moving-marker/2.7.6/moving-marker.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-  <body>
+
     
     
     <div class="container1 text-center text-white">
@@ -29,46 +22,38 @@
     <a href="{% url 'nasa_photo' %}"><button type="button" style="padding: 10px; box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" class="btn btn-outline-light ntn-lg">PHOTO</button></a>
     
     
-    <script>
+<script>
+function tracker() {
+    $.get('/iss_ask', function(data) {         
+            let longitude = data.longitude;
+            let latitude = data.latitude;
+            let letter1 = data.letter1;
+            let letter2 = data.letter2;
+            $('#longitude').text(data.longitude);
+            $('#latitude').text(data.latitude);
+            $('#letter1').text(data.letter1);
+            $('#letter2').text(data.letter2);
+            
+            console.log("'longitude' wynosi: " + data.longitude);
+            marker.setLatLng([latitude, longitude]);
+        });
+      }
+setInterval(tracker, 1000);
       
-      function tracker() {
-            $.get('/iss_ask', function(data) {         
-                let longitude = data.longitude;
-                let latitude = data.latitude;
-                let letter1 = data.letter1;
-                let letter2 = data.letter2;
-                $('#longitude').text(data.longitude);
-                $('#latitude').text(data.latitude);
-                $('#letter1').text(data.letter1);
-                $('#letter2').text(data.letter2);
-                
-                console.log("'longitude' wynosi: " + data.longitude);
-                marker.setLatLng([latitude, longitude]);
-            });
-          }
-              
-        setInterval(tracker, 1000);
-          
-        let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
-
-        let issIcon = L.icon({
-                iconUrl: '{% static 'iss.png' %}',
-                iconSize: [40, 40],
-                iconAnchor: [25, 25]
-            });
-        
-        let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Station" }).addTo(mymap);  
-        
-        
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-        }).addTo(mymap);
-        
-       
-    </script>
-  </body>
+let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
+let issIcon = L.icon({
+            iconUrl: '{% static 'iss.png' %}',
+            iconSize: [40, 40],
+            iconAnchor: [25, 25]
+        });
+    
+let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Station" }).addTo(mymap);  
+    
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+    }).addTo(mymap);
+</script>      
 {% endblock %}

@@ -1,0 +1,18 @@
+body {
+    background-image: url("static/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+.container {
+    max-width: 800px;
+    background: linear-gradient(to bottom, #415a77, #1b263b);
+    border:1px solid #ccc;
+    font-family: 'Orbitron', sans-serif;
+   
+    }    
+#photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }      
+

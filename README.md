@@ -1,3 +1,3 @@
-# nasa_api and ISS Tracker
+# ISS Tracker and NASA_api
 
-Simple app which is showing pictures from NASA API
+Simple app which shows pictures from NASA API

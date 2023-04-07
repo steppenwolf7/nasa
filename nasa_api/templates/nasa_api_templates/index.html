@@ -1,26 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% load static %}  
+{% load static %}  
 
-    
-    
-    <div class="container1 text-center text-white">
-      <h1><div class="col">Actual Position of ISS:</div></h1>
-      <div class="row">
-        <div class="col">
-          <h4 style="padding: 20px"><span id="latitude">Latitude</span> <span id="letter1">N/S</span></h4>
+<div class="container1 text-center text-white">
+  <h1><div class="col">Actual Position of ISS:</div></h1>
+    <div class="row">
+      
+      <div class="col1">
+        <h5 style="padding: 5px"><span id="latitude">Latitude</span><span id="letter1">N/S</span></h5>
         </div>
-        <div class="col">
-          <h4 style="padding: 20px"><span id="longitude">Longitude</span> <span id="letter2">W/E</span><h4>
-        </div>
-      </div>
+        
+        
+        <div class="col1">
+        <h5 style="padding: 5px"><span id="longitude">Longitude</span><span id="letter2">W/E</span></h5>
+        </div></div></div>
     
-   <div id="map" style="height: 500px; padding: 50px; box-shadow: 12px 12px 6px rgba(0, 0, 0, 0.5);"></div></div>
+<div id="map"></div>
    
-   <div class="row" style="padding: 50px">
-    <div class="col"><h2 style="padding: 10px">Astronomy Picture of the Day:</h2></div>
-    <a href="{% url 'nasa_photo' %}"><button type="button" style="padding: 10px; box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" class="btn btn-outline-light ntn-lg">PHOTO</button></a>
-    
+<div class="row" style="padding: 50px">
+<div class="col"><h2 style="padding: 10px">Astronomy Picture of the Day:</h2></div>
+<a href="{% url 'nasa_photo' %}"><button type="button" id="button1" class="btn btn-outline-light ntn-lg">photo</button></a>
     
 <script>
 function tracker() {

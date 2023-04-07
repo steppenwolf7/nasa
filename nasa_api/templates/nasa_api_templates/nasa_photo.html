@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-  <div class="col" style="padding:20px">
-    <a href="{% url 'index' %}"><button type="button" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);" class="btn btn-outline-light ntn-lg">Back to ISS Tracker</button></a>
-  </div>
+<div class="col" style="padding:20px">
+  <a href="{% url 'index' %}"><button id="button2" type="button" class="btn btn-outline-light ntn-lg">Back to ISS Tracker</button></a>
+</div>
 
 <div class="container text-center text-white" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);">
     
@@ -12,16 +13,12 @@
 <h3>{{ title }}</h3>
     
 <a href="{% url 'fullhd' %}">
-    <img id="photo" src="{{ hdurl }}" alt="FullHD" target="_blank" class="img-fluid" style="box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);"> 
+    <img id="photo" src="{{ hdurl }}" alt="FullHD" target="_blank" class="img-fluid"> 
     </a></div>
     
-    
-    <h4>{{ explanation }}</h4>
-    <h5>copyright: {{ copyright }}</h5></div>
-  
-    
-    
-    {% endblock %}
+<h4>{{ explanation }}</h4>
+<h5>copyright: {{ copyright }}</h5></div>
+{% endblock %}
 
 
 

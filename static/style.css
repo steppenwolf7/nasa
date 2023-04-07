@@ -1,12 +1,7 @@
-body {
-    background-image: url("static/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    }
 .container {
     max-width: 800px;
-    background: linear-gradient(to bottom, #415a77, #1b263b);
-    border:1px solid #ccc;
+    background: linear-gradient(to bottom, #57737a, #22223b);
+    border:1px solid #f4f4f7;
     font-family: 'Orbitron', sans-serif;
    
     }    
@@ -14,5 +9,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
     }      
+.col1 {
+        width: 50%;
+        float: left;
+        box-sizing: border-box;
+      }
 
+#letter1 {
+    color: #b4acac;
+}      
+
+#letter2{
+    color: #b4acac;
+}      
+
+#map {
+    height: 500px;
+    padding: 50px;
+    box-shadow: 12px 12px 6px rgba(0, 0, 0, 0.5);
+}
+
+#button1 {
+    padding:10px;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+}
+
+#button2 {
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+}

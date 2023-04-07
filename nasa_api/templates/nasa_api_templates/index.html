@@ -9,8 +9,6 @@
       <div class="col1">
         <h5 style="padding: 5px"><span id="latitude">Latitude</span><span id="letter1">N/S</span></h5>
         </div>
-        
-        
         <div class="col1">
         <h5 style="padding: 5px"><span id="longitude">Longitude</span><span id="letter2">W/E</span></h5>
         </div></div></div>
@@ -32,8 +30,6 @@ function tracker() {
             $('#latitude').text(data.latitude);
             $('#letter1').text(data.letter1);
             $('#letter2').text(data.letter2);
-            
-            console.log("'longitude' wynosi: " + data.longitude);
             marker.setLatLng([latitude, longitude]);
         });
       }
@@ -46,7 +42,7 @@ let issIcon = L.icon({
             iconAnchor: [25, 25]
         });
     
-let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Station" }).addTo(mymap);  
+let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Space Station" }).addTo(mymap);  
     
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +

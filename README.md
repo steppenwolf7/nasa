@@ -1,4 +1,4 @@
-# ISS Tracker and NASA_api
+# ISS Tracker and NASA API
 
 Simple app which track Internatinal Space Station on the map and shows pictures from NASA API.
 

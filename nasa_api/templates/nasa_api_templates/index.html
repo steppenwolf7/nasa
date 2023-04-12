@@ -20,7 +20,7 @@
 <a href="{% url 'nasa_photo' %}"><button type="button" id="button1" class="btn btn-outline-light ntn-lg">photo</button></a>
     
 <script>
-function tracker() {                                  //function that refresh data every 1 second using "iss_ask" view
+function tracker() {                                  //function that ask iss_ask view for data and set marker.setLatLng
     $.get('/iss_ask', function(data) {         
             let longitude = data.longitude;
             let latitude = data.latitude;
@@ -33,7 +33,7 @@ function tracker() {                                  //function that refresh da
             marker.setLatLng([latitude, longitude]);
         });
       }
-setInterval(tracker, 1000);
+setInterval(tracker, 1000);                          // funcion that call tracker() function ecery second
       
 let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);   // starting view of map 
 let issIcon = L.icon({                                                    // specification of ISS icon 

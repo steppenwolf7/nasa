@@ -20,7 +20,7 @@
 <a href="{% url 'nasa_photo' %}"><button type="button" id="button1" class="btn btn-outline-light ntn-lg">photo</button></a>
     
 <script>
-function tracker() {
+function tracker() {                                  //function that refresh data every 1 second using "iss_ask" view
     $.get('/iss_ask', function(data) {         
             let longitude = data.longitude;
             let latitude = data.latitude;
@@ -35,19 +35,19 @@ function tracker() {
       }
 setInterval(tracker, 1000);
       
-let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);
-let issIcon = L.icon({
+let mymap = L.map('map').setView([{{ latitude }}, {{ longitude }}], 3);   // starting view of map 
+let issIcon = L.icon({                                                    // specification of ISS icon 
             iconUrl: '{% static 'iss.png' %}',
             iconSize: [40, 40],
             iconAnchor: [25, 25]
         });
     
-let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Space Station" }).addTo(mymap);  
+let marker = L.marker([0, 0], {icon: issIcon, title: "ISS International Space Station" }).addTo(mymap);  //adding icon marker on the map
     
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',                                   // Attribution for the map data and imagery
         maxZoom: 18,
     }).addTo(mymap);
 </script>      

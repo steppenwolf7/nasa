@@ -2,15 +2,15 @@ from django.shortcuts import render
 import requests
 from django.http import JsonResponse
 
-def index(request):                                             # view which ask api for latitude and longitude and rander index.html
+def index(request):                                             
+    # view which ask api for latitude and longitude and rander index.html
     url = "http://api.open-notify.org/iss-now.json"
-    response = requests.get(url)
-    data = response.json()
+    response = requests.get(url)                                    #Przetestować czy url daje odpowiedz
+    data = response.json()                                              #sprawdzić czy zmienna data jest w json
     
-    latitude = data['iss_position']['latitude']
+    latitude = data['iss_position']['latitude']                         #sprawdzić czy zmienne zwracają prządany rodzaj danych
     longitude = data['iss_position']['longitude']
     
- 
     context = {                                                  #make context dictionary with all my data                   
         'latitude':latitude,
         'longitude':longitude
@@ -49,7 +49,8 @@ def iss_ask(request):                                             #Make a reques
 
 
 def nasa_photo(request):
-    key = 'cFKcJgtVk819w8bOr5iM5UJv07wsrR0vPamoy0fx'        #Make a request to the API to get data
+    #Make a request to the API to get data
+    key = 'cFKcJgtVk819w8bOr5iM5UJv07wsrR0vPamoy0fx'        
     url = "https://api.nasa.gov/planetary/apod"
     params = {
         'api_key':key
@@ -76,7 +77,8 @@ def nasa_photo(request):
 
 
 def fullhd(request):                                        
-    key = 'cFKcJgtVk819w8bOr5iM5UJv07wsrR0vPamoy0fx'        #Make a request to the API to get data
+    #Make a request to the API to get data
+    key = 'cFKcJgtVk819w8bOr5iM5UJv07wsrR0vPamoy0fx'        
     url = "https://api.nasa.gov/planetary/apod"
     params = {
         'api_key':key
